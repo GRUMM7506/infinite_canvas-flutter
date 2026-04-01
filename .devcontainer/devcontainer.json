@@ -1,0 +1,17 @@
+{
+  "name": "Flutter Project",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {},
+    "ghcr.io/flutter/devcontainer-feature/flutter-sdk:0": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.flutter",
+        "dart-code.dart-code"
+      ]
+    }
+  },
+  "postCreateCommand": "flutter doctor"
+}
