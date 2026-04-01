@@ -126,7 +126,7 @@ class ExportService {
     for (final s in strokes.skip(1)) {
       b = b.expandToInclude(s.bounds);
     }
-    return (b.width >= 1 && b.height >= 1) ? b : null;
+    return b;
   }
 
   Offset _mid(Offset a, Offset b) =>
@@ -143,6 +143,14 @@ class ExportService {
         lockParentWindow: true,
       );
       if (path != null) {
+        await File(path).writeAsBytes(bytes);
+        return path;
+      }
+    } catch (_) {}
+    try {
+      final dir = await getDownloadsDirectory();
+      if (dir != null) {
+        final path = '${dir.path}/$name';
         await File(path).writeAsBytes(bytes);
         return path;
       }
